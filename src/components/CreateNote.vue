@@ -4,14 +4,14 @@
       <form @submit.prevent="onSubmit">
         <div>
           <legend>Cabeçalho</legend>
-          <input type="text" v-model="costumerName" placeholder="Nome do cliente" />
-          <input type="text" v-model="sellerName"  placeholder="Vendedor" />
+          <input required  type="text" v-model="costumerName" placeholder="Nome do cliente*" />
+          <input required type="text" v-model="sellerName"  placeholder="Vendedor*" />
         </div>
         <div>
           <legend>Itens</legend>
           <div>
             <div id="erro">
-              <label id="erroMessage"><b>Erro!</b> TESTE</label>
+              <ErrorMessage :erroActive="erroActive" :message="messageErro.status" v-if="erroActive" />
             </div>
             <div id="divAddElement">
             <input
@@ -86,7 +86,10 @@
 </template>
 <script>
 import api from '../services/api';
+import ErrorMessage from './ErrorMessage.vue';
+
 export default {
+  components:{ ErrorMessage },
   methods: {
     onSubmit() {},
     addTodo() {
@@ -95,15 +98,20 @@ export default {
       let tipoPeca = this.typePiece
       let precoPeca = 0
       if(tipoPeca == 0){
-        precoPeca = 0.35
-      } else {
         precoPeca = 0.45
+      } else {
+        precoPeca = 0.55
       }
+      let unitPrice = (qtdPontos * precoPeca)/1000
       let total = parseFloat(this.qnt) * ((qtdPontos * precoPeca)/1000)
-      console.log(this.typePiece);
+      console.log(this.qnt.trim() == "");
+      if(this.qnt.trim() == "" || this.desc.trim() == "" ){
+        console.log("campos obrigatórioas não preenchidos")
+      }
       this.todos.push({
         qnt: this.qnt,
         desc: this.desc,
+        vUnit: unitPrice,
         qtdPontos: qtdPontos.toFixed(2),
         total: total.toFixed(2),
       });
@@ -136,6 +144,7 @@ export default {
   },
   data() {
     return {
+      erroActive: false,
       costumerName: "",
       sellerName: "",
       todos: [],
@@ -165,7 +174,7 @@ form {
 
 #qntItens {
   display: flexbox;
-  height: 40vh;
+  height: 500px;
   width: 100%;
   overflow: auto;
 }
@@ -187,23 +196,16 @@ form {
 }
 
 #itens {
-  height: 15%;
+  height: 50px;
   width: 100%;
-  padding-top: 1%;
+  padding-top: 10px;
 }
 
 #erro {
   display: flex;
   margin: 2%;
 }
-#erroMessage {
-  background-color: #ff9999;
-  padding: 1%;
-  width: 45vh;
-  border: none;
-  margin-left: 10%;
-  border-radius: 0px;
-}
+
 
 .closeButton {
   cursor: pointer;
@@ -243,18 +245,12 @@ form {
 }
 
 #container {
-    display: contents;
-    width: 100vh;
-    height: 100vh;
     background-color: lightgray;
-    padding-left: 10%;
-    padding-right: 10%;
 }
 #content {
   display: flex;
   padding: 3%;  
   background-color: white;
-  height: 100vh;
   width: 100%;
 }
 </style>

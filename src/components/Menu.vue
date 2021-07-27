@@ -7,33 +7,34 @@
     </div>
     <div id="menu">
         <ul>
-            <li>
+            <li class="itemMenu">
                 <a v-on:click="index" href="">
                     <i class="material-icons">home</i>
+                    <p class="textMenu">Home</p>
                 </a>
             </li>
-            <li>
+            <li class="itemMenu">
                 <a v-on:click="newNote" href="">
                     <i class="material-icons">note_add</i>
-                    <p>Nova Nota</p>
+                    <p class="textMenu">Nova Nota</p>
                 </a>
             </li>
-            <li>
+            <li class="itemMenu">
                 <a v-on:click="note" href="">
                     <i class="material-icons">note</i>
-                    <p>Notas</p>
+                    <p class="textMenu">Notas</p>
                 </a>
             </li>
-            <li>
+            <li class="itemMenu" >
                 <a href="">
                     <i class="fas fa-user-friends"></i>
-                    <p>Cliente</p>
+                    <p class="textMenu">Clientes</p>
                 </a>
             </li>
-            <li>
+            <li class="itemMenu">
                 <a href="">
                     <i class="fas fa-user-plus"></i>
-                    <p>Novo Cliente</p>
+                    <p class="textMenu">Novo Cliente</p>
                 </a>
             </li>
         </ul>
@@ -72,21 +73,37 @@ ul{
     width: 10%;
 }
 
-li a {
+a {
     display: flex;
     width: 100%;
-    padding-top: 2%;
 }
 
-p {
-    padding-left: 2%;
+.itemMenu{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 5%;
+    width: max-content;
+}
+
+.textMenu {
+    margin-left: 25px;
 }
 i {
     font-size: 24px;
+    color: black;
 }
 
-p, i {
+p {
     color: black;
+    height: fit-content;
+}
+
+a:hover  i{
+    color:white
+}
+a:hover  p{
+    color:white
 }
 
 @media screen and (max-width : 700px) {

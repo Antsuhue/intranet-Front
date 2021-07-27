@@ -11,6 +11,7 @@
     import Header from '../components/Header.vue'
     import CreateNote from '../components/CreateNote.vue'
     import Menu from '../components/Menu.vue'
+
 export default {
     components:{
         Header,
@@ -23,10 +24,8 @@ export default {
 <style scoped>
 #newNote{
     display: flex;
-    position: fixed;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    margin: 10px
 }
 
 #teste{
@@ -34,8 +33,6 @@ export default {
     justify-content: center;
     flex-direction: row;
     padding-top: 1%;
-    width: 100%;
-    height: 100%;
 }
 
 </style>
