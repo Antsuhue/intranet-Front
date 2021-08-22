@@ -1,65 +1,116 @@
 <template>
-    <div id="nav">
-      <div id="menu">
-        <ul id="menu2">
-          <li><a href="">Notas</a>
-          <ul>
-            <li>Nova Nota</li>
-            <li>Notas Pendentes</li>
-            <li>Notas Pagas</li>
-          </ul>
-          </li>
-          <li><a href="">Cliente</a>
-          <ul>
-          <li>Novo Cliente</li>
-          <li>Ver Clientes</li>
-          <li>Excluir Clientes</li>
-          </ul>
-          </li>
-          <li>
-            Finanças
-          </li>
-        </ul>
-      </div>
-      <div id="card">
-      <img id="imgPerfil" src="../assets/goku.png" alt="">
-      <ul id="info">
-      <li>Nome</li>
-      <li id="changePerfil" v-on:click="changePerfil" >Editar Perfil</li>
-      <li>Cargo</li>
-      </ul>
-      </div>
+  <div id="nav">
+    <div id="card">
+      <img id="imgPerfil" src="../assets/goku.png" alt="" />
     </div>
+  </div>
 </template>
 <script>
 export default {
-  methods:{
-    changePerfil: function(){
-      this.$router.push({name:"ChangePerfil"})
-    }
-  }
-}
+  methods: {
+    changePerfil: function () {
+      this.$router.push({ name: "ChangePerfil" });
+    },
+    index: function () {
+      this.$router.push({ name: "Logado" });
+    },
+    newNote: function () {
+      this.$router.push({ name: "NewNote" });
+    },
+  },
+};
 </script>
 <style scoped>
+#card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 10%;
+}
+
+img{
+  display: flex;
+  width: 30%;
+  border-radius: 200px;
+}
+
+#nav{
+  display: flex;
+  position: fixed;
+  justify-content: flex-end;
+  position: relative;
+}
+
+</style>
+
+
+/*#contentHamburger{
+  display: none;  
+}
+
+#menu1{
+  background-color: black;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#menu{
+  padding: 5px;
+  cursor: pointer;
+}
+
+#menu span{
+  color: white;
+  text-align: center;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.dropdown-content{
+  display: none;
+  
+}
+
+.dropdown-content p {
+  padding: 8px;
+  margin:0;
+  text-align: start;
+  background: #80dfff;
+}
+.dropdown p:hover{
+  background-color: black;
+  color: white;
+}
+
+
+.dropdown:hover .dropdown-content{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
 #nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  margin-top: -10px;
   padding-left: 10%;
   padding-right: 10%;
+  padding-bottom: 1%;
 }
 
 #card{
-  display: flex;
-  justify-content: space-between;
+  display: none;
   border-end-end-radius: 12px;
   border-end-start-radius: 12px;
-  height: 12vh;
+  height: 13vh;
   width: 35vh;
-  padding-top: 5px;
+  padding-top: 10px;
   padding-left: 10px;
   border-top: 0px;
-  border-style: solid;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
   background-color: #99ccff;
 }
 
@@ -77,45 +128,13 @@ export default {
 #menu2{
   position: fixed;
   display: flex;
+  background: black;
+  border-radius: 10px;
   list-style-type: none;
   color: white;
+  padding-left: 10px;
 }
 
-#menu2 li ul{
-  position: fixed;
-  display: none;
-}
-
-#menu2 li a{
-  padding: 5px;
-  background-color: black;
-  color:white;
-  
-}
-
-#menu02 li a:hover {
-  background-color: green;
-  color:white;
-  
-}
-
-
-#menu2 li:hover ul, #menu li.over ul{
-  display: flex;
-  flex-direction: column;
-  }
-
-#menu2 li ul{
-  top: 64px;
-  padding: 10px;
-}
-
-#menu2 li{
-  background-color: black;
-  padding: 5px;
-  font-weight: bolder;
-  cursor: pointer;
-}
 
 
 #info{
@@ -127,10 +146,35 @@ export default {
   height: 1vh;
   width: 20vh;
 }
-@media only screen and (max-width: 500px) {
-    #info {font-size: 13px;}
-    #menu {
 
+.subMenu{
+  display: inline-block;
+
+}
+
+@media only screen and ( max-height: 650px) {
+    #info {font-size: 13px;
+    }
+    #contentHamburger{
+      cursor: pointer;
+      display: block;
+      flex-direction: column;
+
+    }
+    #ham1, #ham2, #ham3{
+      display: grid;
+      width: 35px;
+      height: 2px;
+      background-color: black;
+      margin: 8px 0;
+    }
+
+    #ham2{
+      width: 24px;
+    }
+
+    #menu1{
+      display: none;
     }
     #menu2 li ul{
     top: 60px;
@@ -142,6 +186,5 @@ export default {
   cursor: pointer;
 }
 #changePerfil:hover{
-  color: greenyellow;
-}
-</style>
+  color: yellow ;
+}*/ 

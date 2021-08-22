@@ -6,6 +6,9 @@
 
 <style>
 
+#app{
+}
+
 #nav a {
   font-weight: bold;
   color: #2c3e50;

@@ -1,4 +1,4 @@
-/<template>
+<template>
   <div class="index">
   <div id="erro" :class="{erro:erroActive}">
     <img id="imgError" v-on:click="closeErroBox" v-if="erroActive" src="../assets/close.png" alt="error">
@@ -59,7 +59,7 @@ export default {
       const user = await api.post("/login", teste)
       const data = user.data
       this.$cookies.set("data", data);
-      this.$router.push({ name:"Logado"})
+      this.$router.push({ name:"Logado" })
       }catch(err){
           this.erroActive = true
           this.messageErro = err.response.data
@@ -77,6 +77,9 @@ export default {
 .index{
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
 .input{
@@ -89,8 +92,10 @@ export default {
   border-radius: 10px;
   color: black;
   background-color: white;
-  width: 35vh;
+  width: 25%;
+  height: 50vh;
   padding: 5%;
+  margin-bottom: 100px;
 }
 
 .buttonLogin{
@@ -134,5 +139,18 @@ export default {
 h3{
   text-align: center;
 }
+
+@media only screen and (max-width: 1200px){
+  .formLogin{
+  width: 35%;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .formLogin{
+  width: 50%;
+  }
+}
+
 
 </style>

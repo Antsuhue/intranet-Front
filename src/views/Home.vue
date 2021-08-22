@@ -8,7 +8,6 @@
 // @ is an alias to /src
 import Formlogin from '@/components/Formlogin.vue'
 
-
 export default {
   name: 'Home',
   components: {
@@ -18,7 +17,6 @@ export default {
 }
 </script>
 <style scoped>
-div{
-  display: flex;
-}
+
+
 </style>

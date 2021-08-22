@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Logado from '../views/Logado.vue'
 import ChangePerfil from '../views/ChangePerfil.vue'
+import NewNote from '../views/NewNote.vue'
+import Notes from "../views/Notes.vue"
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/changePerfil',
     name: "ChangePerfil",
     component: ChangePerfil
+  },
+  {
+    path: '/newNote',
+    name: "NewNote",
+    component: NewNote
+  },
+  {
+    path: '/notes',
+    name: "Notes",
+    component: Notes
   },
   {
     path: '/about',
