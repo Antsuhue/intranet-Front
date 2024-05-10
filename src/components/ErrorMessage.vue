@@ -6,11 +6,13 @@
 </template>
 
 <script>
+
 export default {
-    props: {
+     props:{
         erroActive: {
             type: Boolean,
-            required: true
+            required: true,
+            default: false
         },
         message: {
             type: String,
@@ -18,8 +20,9 @@ export default {
         }
     },
     methods:{
-        closeErroBox: function() {
-        this.erroActive = false
+        closeErroBox () {
+        // this.erroActive = false
+        this.$emit("closeError")
       }
     }
 }

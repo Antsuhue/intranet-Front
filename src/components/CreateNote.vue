@@ -11,7 +11,7 @@
           <legend>Itens</legend>
           <div>
             <div id="erro">
-              <ErrorMessage :erroActive="erroActive" :message="messageErro.status" v-if="erroActive" />
+              <ErrorMessage :erroActive="erroActive" :message="messageErro.status" @closeError="erroActive = false" />
             </div>
             <div id="divAddElement">
             <input
@@ -104,14 +104,15 @@ export default {
       }
       let unitPrice = (qtdPontos * precoPeca)/1000
       let total = parseFloat(this.qnt) * ((qtdPontos * precoPeca)/1000)
-      console.log(this.qnt.trim() == "");
       if(this.qnt.trim() == "" || this.desc.trim() == "" ){
-        console.log("campos obrigatórioas não preenchidos")
-      }
-      this.todos.push({
+        this.erroActive = true
+        this.messageErro = {status:"campos obrigatórioas não preenchidos"}
+      }else{
+        this.erroActive = false
+        this.todos.push({
         qnt: this.qnt,
         desc: this.desc,
-        vUnit: unitPrice,
+        vUnit: unitPrice.toFixed(2),
         qtdPontos: qtdPontos.toFixed(2),
         total: total.toFixed(2),
       });
@@ -120,6 +121,8 @@ export default {
       this.qtdPontos = "";
       this.total = "";
       this.typePiece = 0
+      }
+      
     },
     removeItem(index) {
       this.todos.splice(index, 1);

@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="errorContainer">
-      <ErroMessage :erroActive="erroActive" :message="messageErro.status" v-if="erroActive" />
+      <ErroMessage :erroActive="erroActive" :message="messageErro.status" @closeError="erroActive = false" />
     </div>
       <b-form class="formLogin">
       <h3>LOGO</h3>
@@ -50,9 +50,6 @@ export default {
   mounted() {
   },
   methods: {
-    closeErroBox: function () {
-      this.erroActive = false
-    },
 
     showUser: function () {
     },
@@ -67,7 +64,6 @@ export default {
         this.erroActive = true
         this.messageErro = err.response.data
         console.log(err.response.data);
-
       }
     }
   }
