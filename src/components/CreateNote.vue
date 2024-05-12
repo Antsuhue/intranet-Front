@@ -106,7 +106,7 @@ export default {
       let total = parseFloat(this.qnt) * ((qtdPontos * precoPeca)/1000)
       if(this.qnt.trim() == "" || this.desc.trim() == "" ){
         this.erroActive = true
-        this.messageErro = {status:"campos obrigatórioas não preenchidos"}
+        this.messageErro["status"] = "Campos obrigatórios não preenchidos"
       }else{
         this.erroActive = false
         this.todos.push({
@@ -148,6 +148,7 @@ export default {
   data() {
     return {
       erroActive: false,
+      messageErro: {},
       costumerName: "",
       sellerName: "",
       todos: [],
@@ -176,7 +177,7 @@ form {
 }
 
 #qntItens {
-  display: flexbox;
+  display: flex;
   height: 500px;
   width: 100%;
   overflow: auto;
