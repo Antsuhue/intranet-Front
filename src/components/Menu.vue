@@ -1,10 +1,10 @@
 <template>
-    <div id="menu">
-        <div id="contentHamburger">
+    <div id="menuContainer">
+        <!-- <div id="contentHamburger">
             <div id="ham1"></div>
             <div id="ham2"></div>
             <div id="ham3"></div>
-        </div>
+        </div> -->
         <div id="menu">
             <ul>
                 <li class="itemMenu">
@@ -57,6 +57,13 @@ export default {
 }
 </script>
 <style scoped>
+
+#menuContainer{
+    display: flex;
+    order: 0;
+    height: 100%;
+}
+ 
 #menu {
     display: flex;
     z-index: 4;
